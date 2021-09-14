@@ -1,12 +1,14 @@
-﻿using Contracts;
+﻿using AutoMapper;
+using Contracts;
+using Contracts.Dtos;
+using Core.Abstraction.Repositories;
 using Core.Abstraction.Services;
-using Core.Domain.Enums;
+using Core.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using WebApi.ApiClients;
 
 namespace WebApi.Controllers
 {
@@ -15,22 +17,35 @@ namespace WebApi.Controllers
     public class StockController : ControllerBase
     {
         private IStockService _stockService;
+        private readonly IRepository<SymbolAggregate> _symbolAggregateRepo;
+        private readonly IMapper _mapper;
+        private const string _baseSymbol = "SPY";
 
-        public StockController(IStockService stockService)
+        public StockController(IStockService stockService, IMapper mapper, IRepository<SymbolAggregate> symbolAggregateRepo)
         {
             _stockService = stockService;
+            _mapper = mapper;
+            _symbolAggregateRepo = symbolAggregateRepo;
         }
 
-        //[HttpGet("{symbol}/{date}")]
-        //public async Task<DailyOpenCloseDto> Get(string symbol, string date)
-        //{
-        //    return await _stockApiClient.GetDataBySymbolName(symbol, date);
-        //}
-
-        [HttpGet("{stocksTicker}/range/{timespan}")]
-        public async Task<AggregatesRangeDto> GetAggregateBarsOverGivenDateRange(string stocksTicker, Timespan timespan)
+        // TODO: Method is just for data demonstration, need at least add filtering and pagination with max count limits for production
+        [HttpGet("get-data")]
+        public async Task<List<AggregateBarDto>> Get()
         {
-            return await _stockService.GetAggregateBarsOverLastWeek(stocksTicker, timespan);
+            var result = await _symbolAggregateRepo.GetAll().ToListAsync();
+            return _mapper.Map<List<AggregateBarDto>>(result);
+        }
+
+        [HttpGet("{stocksTicker}/range")]
+        public async Task<List<List<string>>> GetAggregateBarsOverGivenDateRange(string stocksTicker)
+        {
+            return await _stockService.GetAggregateBarsOverLastWeekWithComparisonAsync(stocksTicker);
+        }
+
+        [HttpGet("{stocksTicker}/day")]
+        public async Task<List<List<string>>> GetAggregateBarsOverDay(string stocksTicker, DateTime date)
+        {
+            return await _stockService.GetAggregateBarsOverDayWithComparisonAsync(stocksTicker, date);
         }
     }
 }

@@ -8,12 +8,7 @@ namespace Core.Domain.Enums
 {
     public enum Timespan
     {
-        Minute,
         Hour,
-        Day,
-        Week,
-        Month,
-        Quarter,
-        Year
+        Day
     }
 }

@@ -5,11 +5,14 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "StockPerformance\Core.csproj", "{DB52AAF6-2C7D-4DCD-91AC-6E450D34FDC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F44FEB77-E300-4436-A4F2-F1337B991C8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{2A5A7479-0BE0-4089-98DE-08FB31B278EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{2A5A7479-0BE0-4089-98DE-08FB31B278EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{81639695-1580-4A4C-904A-242E99E92892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{81639695-1580-4A4C-904A-242E99E92892}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{686F7608-A983-4FB0-99FC-9526D22A2DA7}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +24,6 @@ Global
 		{DB52AAF6-2C7D-4DCD-91AC-6E450D34FDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB52AAF6-2C7D-4DCD-91AC-6E450D34FDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB52AAF6-2C7D-4DCD-91AC-6E450D34FDC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F44FEB77-E300-4436-A4F2-F1337B991C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F44FEB77-E300-4436-A4F2-F1337B991C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F44FEB77-E300-4436-A4F2-F1337B991C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F44FEB77-E300-4436-A4F2-F1337B991C8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A5A7479-0BE0-4089-98DE-08FB31B278EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A5A7479-0BE0-4089-98DE-08FB31B278EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A5A7479-0BE0-4089-98DE-08FB31B278EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
